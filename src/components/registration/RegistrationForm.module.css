@@ -1,0 +1,57 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+   
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form h4 {
+    color: var(--primary); 
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border: 1px solid  var(--primary); 
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .submitButton {
+    background-color:  var(--primary);
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: var(--secondary); 
+  }
+  
+  .loginLink {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .loginLink a {
+    color:var(--primary);
+  }
+  
+  .loginLink a:hover {
+    text-decoration: underline;
+  }
+  
