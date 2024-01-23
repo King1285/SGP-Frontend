@@ -47,13 +47,8 @@ form h4 {
 }
 
 .createAccountLink {
-  text-align: center;
+ float: right;
+ margin-top: 10px;
+ color: var(--primary);
 }
 
-.createAccountLink a {
-  color: var(--primary);
-}
-
-.createAccountLink a:hover {
-  text-decoration: underline;
-}
