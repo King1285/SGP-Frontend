@@ -13,6 +13,7 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        <h4>Login</h4>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email address</Form.Label>
           <Form.Control

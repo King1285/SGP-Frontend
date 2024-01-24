@@ -46,9 +46,9 @@ const RegistrationForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control
-            placeholder="Email Address"
+            placeholder="Charusat email address"
             {...register("email")}
             isInvalid={!!errors.email?.message}
           />
@@ -71,7 +71,7 @@ const RegistrationForm = () => {
         <Form.Group className="mb-3" controlId="passing_year">
           <Form.Label>Passing Year</Form.Label>
           <Form.Control
-            placeholder="Passing Year"
+            placeholder="Passing year"
             {...register("passing_year")}
             isInvalid={!!errors.passing_year?.message}
           />

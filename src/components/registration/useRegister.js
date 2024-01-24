@@ -7,8 +7,8 @@ const schema = yup
   .object({
     email: yup
       .string()
-      .email("Please enter a valid email address")
-      .required("Please enter a email address")
+      .email("Please enter a valid charusat email address")
+      .required("Please enter a charusat email address")
       .matches(
         "^(?=.*ce)(?=.*charusat)(?=.*in).*$",
         "Please enter a charusat email address"
