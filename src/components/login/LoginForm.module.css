@@ -5,21 +5,21 @@
   height: 100vh;
 }
 
-form {
+.loginform {
   width: 400px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form h4 {
+.form h4 {
   color:var(--primary); 
 }
 
 .form-group {
   margin-bottom: 20px;
+  background-color: #181818;
 }
 
 .form-label {
@@ -48,7 +48,20 @@ form h4 {
 
 .createAccountLink {
  float: right;
- margin-top: 10px;
+ margin-top: 25px;
  color: var(--primary);
 }
 
+
+
+@keyframes animate 
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}

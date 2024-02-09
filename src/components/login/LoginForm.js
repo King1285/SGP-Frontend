@@ -9,9 +9,9 @@ import useLogin from "./useLogin";
 
 const LoginForm = () => {
   const { handleSubmit, onSubmit, register, errors } = useLogin();
-  // console.log("errors", errors);
   return (
     <div className={styles.container}>
+       <div className={styles.loginForm}>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <h4>Login</h4>
         <Form.Group className="mb-3" controlId="email">
@@ -44,9 +44,12 @@ const LoginForm = () => {
         </Button>
         <br />
         <Link className={styles.createAccountLink} to={routes.register}>
+          <div className={styles.register}>
           Create an account
+          </div>
         </Link>
       </Form>
+      </div>
     </div>
   );
 };
