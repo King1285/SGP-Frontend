@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -20,6 +20,10 @@ const schema = yup
         "^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$",
         "Password must have at least 8 characters and one special character."
       ),
+    reconfirm_password: yup
+      .string()
+      .required("Please reconfirm your password")
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
     first_name: yup.string().required("Please enter a first name"),
     last_name: yup.string().required("Please enter a last name"),
     dob: yup.string().required("Please enter a date of birth"),
@@ -50,6 +54,7 @@ const useRegister = () => {
       charusat_id: "",
       dob: "",
       passing_year: "",
+      reconfirm_password: "",
     },
   });
   const onSubmit = (data) => console.log(data);

@@ -52,7 +52,18 @@
  color: var(--primary);
 }
 
+.createAccountLink a {
+  color:var(--primary);
+}
 
+.createAccountLink a:hover {
+  text-decoration: underline;
+}
+
+.forgotpassword{
+  float: right;
+  color: var(--primary);
+}
 
 @keyframes animate 
 {

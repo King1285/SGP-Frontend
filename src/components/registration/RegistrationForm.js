@@ -92,6 +92,18 @@ const RegistrationForm = () => {
             {errors.password && errors.password.message}
           </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="reconfirm_password">
+          <Form.Label>Reconfirm password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Reconfirm password"
+            {...register("reconfirm_password")}
+            isInvalid={!!errors.reconfirm_password?.message}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.reconfirm_password && errors.reconfirm_password.message}
+          </Form.Control.Feedback>
+        </Form.Group>
         <Button variant="primary" type="submit" style={{ width: "100%" }}>
           Submit
         </Button>
