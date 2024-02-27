@@ -24,14 +24,17 @@
 
 .form-label {
   color: var(--primary); 
+  margin-bottom: 0%;
 }
 
 .form-control {
   border: 1px solid var(--primary); 
+
 }
 
 .form-check-label {
   color: var(--primary); 
+  color: #fff;
 }
 
 .checkbox {
@@ -40,9 +43,8 @@
 
 .submitButton {
   background-color: var(--primary);
-  color: #fff;
   padding: 10px;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   cursor: pointer;
 }
 
@@ -56,13 +58,18 @@
   color:var(--primary);
 }
 
-.createAccountLink a:hover {
-  text-decoration: underline;
+.createAccountLink:hover {
+  color: var(--secondary);
 }
 
+
 .forgotpassword{
-  float: right;
+  display: flex;
+  justify-content: flex-end;
   color: var(--primary);
+}
+.createAccountLink a:hover {
+  text-decoration: underline;
 }
 
 @keyframes animate 

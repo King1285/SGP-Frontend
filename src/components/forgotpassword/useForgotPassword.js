@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import axios from "axios";
-import { LOGIN } from "../../constants/api";
+import { FORGOT_SEND_OTP } from "../../constants/api";
 
 const schema = yup
   .object({
@@ -16,17 +16,10 @@ const schema = yup
         "^(?=.*ce)(?=.*charusat)(?=.*in).*$",
         "Please enter a charusat email address"
       ),
-    password: yup
-      .string()
-      .required("Please enter a password")
-      .matches(
-        "^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$",
-        "Password must have at least 8 characters and one special character"
-      ),
   })
   .required();
 
-const useLogin = () => {
+const useForgotPassword = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -36,18 +29,20 @@ const useLogin = () => {
     resolver: yupResolver(schema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
   const onSubmit = (data) => {
     console.log("data", data);
     axios
-      .post(LOGIN, data)
+      .post(FORGOT_SEND_OTP, data)
       .then((res) => {
         console.log(res.status, res.data);
         if (res.status === 200) {
-          localStorage.setItem("user", JSON.stringify(res.data?.data));
-          navigate(routes.information);
+          navigate(routes.forgotverify, {
+            state: {
+              email: data.email,
+            },
+          });
         }
       })
       .catch((err) => {
@@ -55,6 +50,7 @@ const useLogin = () => {
         // alert("vgvgvjvbjhbjkbjk");
         // dynamic show from api error res
       });
+    navigate(routes.forgotverify);
   };
 
   return {
@@ -65,4 +61,4 @@ const useLogin = () => {
   };
 };
 
-export default useLogin;
+export default useForgotPassword;

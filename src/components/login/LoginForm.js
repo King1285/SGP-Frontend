@@ -13,11 +13,11 @@ const LoginForm = () => {
     <div className={styles.container}>
       <div className={styles.loginForm}>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <h4>Login</h4>
+          <h4>LOGIN</h4>
           <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label classname="title">Email</Form.Label>
             <Form.Control
-              placeholder="Enter email"
+              placeholder="22ce004@charusat.edu.in"
               {...register("email")}
               isInvalid={!!errors.email?.message}
             />
@@ -42,14 +42,13 @@ const LoginForm = () => {
           <Button variant="primary" type="submit" style={{ width: "100%" }}>
             Submit
           </Button>
-
           <Link className={styles.createAccountLink} to={routes.register}>
-            <div className={styles.register}>Create an account</div>
+            <div className={styles.register}>Create an Account</div>
+          </Link>
+          <Link className={styles.forgotpassword} to={routes.forgotpassword}>
+            <div className={styles.forgotpassword}>Forgot password</div>
           </Link>
 
-          <Link className={styles.forgotPassword}>
-            <div className={styles.forgotPassword}>Forgot password</div>
-          </Link>
           <br />
         </Form>
       </div>

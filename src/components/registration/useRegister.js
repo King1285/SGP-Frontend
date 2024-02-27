@@ -2,6 +2,10 @@ import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
+import { REGISTER, SEND_OTP } from "../../constants/api";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants/routes";
 
 const schema = yup
   .object({
@@ -40,6 +44,7 @@ const schema = yup
   .required();
 
 const useRegister = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -57,7 +62,40 @@ const useRegister = () => {
       reconfirm_password: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    const payload = {
+      firstName: data.first_name,
+      lastName: data.last_name,
+      email: data.email,
+      c_id: data.charusat_id,
+      dob: data.dob,
+      passingYear: data.passing_year,
+      password: data.password,
+    };
+    axios
+      .post(REGISTER, payload)
+      .then((res) => {
+        console.log(res.status, res.data, "resgister res");
+        axios
+          .post(SEND_OTP, { email: data.email })
+          .then((res) => {
+            console.log(res.status, res.data, "send otp res");
+            navigate(routes.confirmregister, {
+              state: {
+                email: data.email,
+              },
+            });
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
+        // navigate(routes.information);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return {
     handleSubmit,
