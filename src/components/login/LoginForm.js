@@ -17,7 +17,7 @@ const LoginForm = () => {
           <Form.Group className="mb-3" controlId="email">
             <Form.Label classname="title">Email</Form.Label>
             <Form.Control
-              placeholder="22ce004@charusat.edu.in"
+              placeholder="Email"
               {...register("email")}
               isInvalid={!!errors.email?.message}
             />
@@ -43,13 +43,15 @@ const LoginForm = () => {
             Submit
           </Button>
           <Link className={styles.createAccountLink} to={routes.register}>
-            <div className={styles.register}>Create an Account</div>
+            Register?
           </Link>
-          <Link className={styles.forgotpassword} to={routes.forgotpassword}>
-            <div className={styles.forgotpassword}>Forgot password</div>
-          </Link>
-
           <br />
+          <Link
+            className={styles.forgotPasswordLink}
+            to={routes.forgotpassword}
+          >
+            Forgot password
+          </Link>
         </Form>
       </div>
     </div>

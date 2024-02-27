@@ -24,7 +24,7 @@
 
 .form-label {
   color: var(--primary); 
-  margin-bottom: 0%;
+  margin-bottom: 0px;
 }
 
 .form-control {
@@ -44,13 +44,14 @@
 .submitButton {
   background-color: var(--primary);
   padding: 10px;
+  margin-bottom: 15px;
   /* border-radius: 4px; */
   cursor: pointer;
 }
 
 .createAccountLink {
  float: right;
- margin-top: 25px;
+ margin-top: 0px;
  color: var(--primary);
 }
 
@@ -59,17 +60,19 @@
 }
 
 .createAccountLink:hover {
+  text-decoration: underline;
   color: var(--secondary);
 }
 
-
-.forgotpassword{
+.forgotPasswordLink{
   display: flex;
   justify-content: flex-end;
+  margin-top: 25px;
   color: var(--primary);
 }
-.createAccountLink a:hover {
+.forgotPasswordLink:hover{
   text-decoration: underline;
+  color: var(--secondary);
 }
 
 @keyframes animate 

@@ -11,7 +11,7 @@ const RegistrationForm = () => {
   return (
     <div className={styles.container}>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Create account</h4>
+        <h4>REGISTER</h4>
         <Form.Group className="mb-3" controlId="first_name">
           <Form.Label>First Name</Form.Label>
           <Form.Control

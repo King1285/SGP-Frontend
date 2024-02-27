@@ -15,7 +15,7 @@ const ResetPassword = () => {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h4>Reset Password</h4>
           <Form.Group className="mb-3" controlId="new_password">
-            <Form.Label>Confirm new Password</Form.Label>
+            <Form.Label>Reset Password</Form.Label>
             <Form.Control
               placeholder="Reset Password"
               {...register("new_password")}
@@ -26,7 +26,7 @@ const ResetPassword = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="confirm_password">
-            <Form.Label>Reset Password</Form.Label>
+            <Form.Label>Confirm new Password</Form.Label>
             <Form.Control
               placeholder="Confirm Password"
               {...register("confirm_password")}
