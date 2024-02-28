@@ -10,22 +10,21 @@ import styles from "./InformationForm.module.css";
 
 const InformationForm = () => {
   const { handleSubmit, onSubmit, register, errors } = useInformation();
-  const [skills, setSkills] = useState(['']);
-  const [domains,setDomains] =useState(['']);
+  const [skills, setSkills] = useState([""]);
+  const [domains, setDomains] = useState([""]);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [projectDescription, setProjectDescription] = useState(''); 
+  const [projectDescription, setProjectDescription] = useState("");
   const handleFileChange = (file) => {
     setSelectedFile(file);
   };
-  
-  
+
   const handleChange = (index, value) => {
     const newSkills = [...skills];
     newSkills[index] = value;
     setSkills(newSkills);
   };
   const handleAdd = () => {
-    setSkills([...skills, '']);
+    setSkills([...skills, ""]);
   };
   const handleRemove = (index) => {
     const newSkills = [...skills];
@@ -39,15 +38,14 @@ const InformationForm = () => {
     setDomains(newDomains);
   };
   const handleAddDomain = () => {
-    setDomains([...domains, '']);
+    setDomains([...domains, ""]);
   };
   const handleRemoveDomain = (index) => {
     const newDomains = [...domains];
     newDomains.splice(index, 1);
     setDomains(newDomains);
-  }
+  };
 
-  
   return (
     <div className={styles.container}>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +64,6 @@ const InformationForm = () => {
             {errors.choice && errors.choice.message}
           </Form.Control.Feedback>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="cgpa">
           <Form.Label>CGPA</Form.Label>
           <Form.Control
@@ -140,12 +137,14 @@ const InformationForm = () => {
             {errors.skill && errors.skill.message}
           </Form.Control.Feedback>
         </Form.Group> */}
-      <Form.Group className="mb-3" controlId="skill">
-  <Form.Label>Skills</Form.Label>
-  <MultiAdd name="skill" setResumeDetails={onSubmit} placeholder="skill"    />
-</Form.Group>
-
-        
+        <Form.Group className="mb-3" controlId="skill">
+          <Form.Label>Skills</Form.Label>
+          <MultiAdd
+            name="skill"
+            setResumeDetails={onSubmit}
+            placeholder="skill"
+          />
+        </Form.Group>
         {/* <Form.Group className="mb-3" controlId="domain">
           <Form.Label>Domain/Technology</Form.Label>
           {domains.map((domain, index) => (
@@ -172,11 +171,14 @@ const InformationForm = () => {
             {errors.domain && errors.domain.message}
           </Form.Control.Feedback>
         </Form.Group> */}
-         <Form.Group className="mb-3" controlId="domain">
-             <Form.Label>Domain/Technology</Form.Label>
-            <MultiAdd name="domain" setResumeDetails={onSubmit} placeholder="entrested domain" />
-                 </Form.Group>
-
+        <Form.Group className="mb-3" controlId="domain">
+          <Form.Label>Domain/Technology</Form.Label>
+          <MultiAdd
+            name="domain"
+            setResumeDetails={onSubmit}
+            placeholder="entrested domain"
+          />
+        </Form.Group>
         {/* <Form.Group className="mb-3" controlId="language">
           <Form.Label>Language</Form.Label>
           <Form.Control
@@ -225,8 +227,8 @@ const InformationForm = () => {
             {errors.project && errors.project.message}
           </Form.Control.Feedback>
         </Form.Group> */}
-
-        {/* <Form.Group className="mb-3" controlId="projectDescription">
+        /*{" "}
+        <Form.Group className="mb-3" controlId="projectDescription">
           <Form.Label>Project Description</Form.Label>
           <Form.Control
             as="textarea"
@@ -240,7 +242,6 @@ const InformationForm = () => {
             {errors.projectDescription && errors.projectDescription.message}
           </Form.Control.Feedback>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="linkedin">
           <Form.Label>Linkedin Link</Form.Label>
           <Form.Control
@@ -263,7 +264,6 @@ const InformationForm = () => {
             {errors.github && errors.github.message}
           </Form.Control.Feedback>
         </Form.Group>
-
         <Button variant="primary" type="submit" style={{ width: "100%" }}>
           Submit
         </Button>
