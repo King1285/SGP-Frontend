@@ -26,11 +26,8 @@ const schema = yup
       .matches("^d+$", "Please enter a numeric value")
       .min(10, "Please enter minimum 10 characters")
       .max(10, "Please enter maximum 10 characters"),
-    skill: yup.string().required("Plese enter skill"),
-    domain: yup
-      .string()
-      .required("Plese enter your interested domain/Technology"),
-    language: yup.string().required("Enter the lannguage"),
+    skill: yup.string().required(),
+    domain: yup.string().required(),
     linkedin: yup
       .string()
       .url("Please enter a valid url")
@@ -57,7 +54,6 @@ const useInformation = () => {
       phone_no: "",
       skill: "",
       domain: "",
-      language: "",
       linkedin: "",
       github: "",
     },
