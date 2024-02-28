@@ -77,22 +77,22 @@ const InformationForm = () => {
   //   }
   // };
 
-  const handleDomainChange = (index, value) => {
-    const newDomains = [...domains];
-    newDomains[index] = value;
-    setDomains(newDomains);
-  };
-  const handleAddDomain = () => {
-    if(domains[domains.length-1] !==''){
-    setDomains([...domains, '']);}
-  };
-  const handleRemoveDomain = (index) => {
-    if(domains.length>1){
-    const newDomains = [...domains];
-    newDomains.splice(index, 1);
-    setDomains(newDomains);
-    }
-  }
+  // const handleDomainChange = (index, value) => {
+  //   const newDomains = [...domains];
+  //   newDomains[index] = value;
+  //   setDomains(newDomains);
+  // };
+  // const handleAddDomain = () => {
+  //   if(domains[domains.length-1] !==''){
+  //   setDomains([...domains, '']);}
+  // };
+  // const handleRemoveDomain = (index) => {
+  //   if(domains.length>1){
+  //   const newDomains = [...domains];
+  //   newDomains.splice(index, 1);
+  //   setDomains(newDomains);
+  //   }
+  // }
 
   
   return (
@@ -196,14 +196,7 @@ const InformationForm = () => {
         </Form.Group> */}
       <Form.Group className="mb-3" controlId="skill">
   <Form.Label>Skills</Form.Label>
-  <MultiAdd name="skill" setResumeDetails={onSubmit} placeholder="skill"  error={errors.skill?.message} isInvalid={!!errors.skill?.message}/>
-  {/* <Form.Control
-            {...register("skill")}
-            isInvalid={!!errors.skill?.message}
-          />
-          <Form.Control.Feedback type="invalid">
-            {errors.skill && errors.skill.message}
-          </Form.Control.Feedback> */}
+  <MultiAdd name="skill" setResumeDetails={onSubmit} placeholder="skill"    />
 </Form.Group>
 
         
