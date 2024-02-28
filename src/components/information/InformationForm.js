@@ -7,31 +7,75 @@ import { Link } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import useInformation from "./useInformation";
 import styles from "./InformationForm.module.css";
+import MultiProjects from './Multiproject/Multiproject.js';
+import MultiAdd from "./Multi/Multiadd.js";
+import MultiEvents from "./Multievent/Multievents.js";
 
 const InformationForm = () => {
   const { handleSubmit, onSubmit, register, errors } = useInformation();
   const [skills, setSkills] = useState(['']);
   const [domains,setDomains] =useState(['']);
+  const [languages,setlanguages]=useState(['']);
   const [selectedFile, setSelectedFile] = useState(null);
   const [projectDescription, setProjectDescription] = useState(''); 
+  const [events, setEvents] = useState([]);
   const handleFileChange = (file) => {
     setSelectedFile(file);
   };
+  const handleEventAdd = () => {
+    setEvents([...events, { name: '', certificate: null }]);
+  };
   
+  const handleEventRemove = (index) => {
+    setEvents(events.filter((event, i) => i !== index));
+  };
   
-  const handleChange = (index, value) => {
-    const newSkills = [...skills];
-    newSkills[index] = value;
-    setSkills(newSkills);
+  const handleEventChange = (index, value) => {
+    setEvents(events.map((event, i) => (i === index ? { ...event, name: value } : event)));
   };
-  const handleAdd = () => {
-    setSkills([...skills, '']);
+  
+  const handleEventCertificateUpload = (index, file) => {
+    setEvents(events.map((event, i) => (i === index ? { ...event, certificate: file } : event)));
   };
-  const handleRemove = (index) => {
-    const newSkills = [...skills];
-    newSkills.splice(index, 1);
-    setSkills(newSkills);
-  };
+  // const handlelanguage=(index,value)=>
+  // {
+  //   const newlanguage=[...languages];
+  //   newlanguage[index]=value;
+  //   setlanguages(newlanguage);
+  // };
+
+  // const addlanguage=()=>{
+  //   if(languages[languages.length-1] !==''){
+  //      setlanguages([...languages,'']);
+  //   }
+  // };
+
+  // const removelanguage=(index)=>{
+  //    if(languages.length>1){
+  //     const newlanguage=[...languages];
+  //     newlanguage.splice(index,1);
+  //     setlanguages(newlanguage);
+  //    }
+  // };
+  // const handleChange = (index, value) => {
+  //   const newSkills = [...skills];
+  //   newSkills[index] = value;
+  //   setSkills(newSkills);
+  // };
+  // const handleAdd = () => {
+  //   const lastSkill = skills[skills.length - 1];
+  //   if (lastSkill !== '') {
+  //     setSkills([...skills, '']);
+  //   }
+  // };
+  
+  // const handleRemove = (index) => {
+  //   if (skills.length > 1) {
+  //     const newSkills = [...skills];
+  //     newSkills.splice(index, 1);
+  //     setSkills(newSkills);
+  //   }
+  // };
 
   const handleDomainChange = (index, value) => {
     const newDomains = [...domains];
@@ -39,12 +83,15 @@ const InformationForm = () => {
     setDomains(newDomains);
   };
   const handleAddDomain = () => {
-    setDomains([...domains, '']);
+    if(domains[domains.length-1] !==''){
+    setDomains([...domains, '']);}
   };
   const handleRemoveDomain = (index) => {
+    if(domains.length>1){
     const newDomains = [...domains];
     newDomains.splice(index, 1);
     setDomains(newDomains);
+    }
   }
 
   
@@ -52,6 +99,11 @@ const InformationForm = () => {
     <div className={styles.container}>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <h4>Student Information</h4>
+        <Form.Group  controlId="image">
+          <Form.Label>Image</Form.Label>
+          <input type="file" accept=".png,.jpg,.jpeg" onChange={(event) => handleFileChange(event.target.files[0])} />
+
+        </Form.Group>
         <Form.Group className="mb-3" controlId="choice">
           <Form.Label>Placement or Higher study</Form.Label>
           <Form.Select
@@ -111,16 +163,18 @@ const InformationForm = () => {
             {errors.phone_no && errors.phone_no.message}
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="skill">
+        {/* <Form.Group className="mb-3" controlId="skill">
           <Form.Label>Skills</Form.Label>
           {skills.map((skill, index) => (
             <div key={index} className="d-flex mb-2">
               <Form.Control
                 placeholder="Enter your skills"
-                value={skill}
-                onChange={(e) => handleChange(index, e.target.value)}
+                // {...register("skill")}
+                 value={skill}
+                 onChange={(e) => handleChange(index, e.target.value)}
                 isInvalid={!!errors.skill?.message}
               />
+              
               <Button
                 variant="outline-danger"
                 onClick={() => handleRemove(index)}
@@ -132,15 +186,28 @@ const InformationForm = () => {
           ))}
           <Button
             variant="outline-secondary"
-            onClick={handleAdd}
+            onClick={handleAdd}UU
           >
             Add Skill
           </Button>
           <Form.Control.Feedback type="invalid">
             {errors.skill && errors.skill.message}
           </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="domain">
+        </Form.Group> */}
+      <Form.Group className="mb-3" controlId="skill">
+  <Form.Label>Skills</Form.Label>
+  <MultiAdd name="skill" setResumeDetails={onSubmit} placeholder="skill"  error={errors.skill?.message} isInvalid={!!errors.skill?.message}/>
+  {/* <Form.Control
+            {...register("skill")}
+            isInvalid={!!errors.skill?.message}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.skill && errors.skill.message}
+          </Form.Control.Feedback> */}
+</Form.Group>
+
+        
+        {/* <Form.Group className="mb-3" controlId="domain">
           <Form.Label>Domain/Technology</Form.Label>
           {domains.map((domain, index) => (
             <div key={index} className="d-flex mb-2">
@@ -165,49 +232,89 @@ const InformationForm = () => {
           >
             Add Domain
           </Button>
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid">np
             {errors.domain && errors.domain.message}
           </Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
+         <Form.Group className="mb-3" controlId="domain">
+             <Form.Label>Domain/Technology</Form.Label>
+            <MultiAdd name="domain" setResumeDetails={onSubmit} placeholder="entrested domain" />
+                 </Form.Group>
 
-        <Form.Group className="mb-3" controlId="language">
+        {/* <Form.Group className="mb-3" controlId="language">
           <Form.Label>Language</Form.Label>
-          <Form.Control
-          placeholder="Enter konwn language"
-          {...register("language")}
-          isInvalid={!!errors.language?.message}
-          />
+          {languages.map((language,index)=>(
+          <div key={index} className="d-flex mb-2">
+              <Form.Control
+                placeholder="Enter known languages"
+                value={language}
+                onChange={(e) => handlelanguage(index, e.target.value)}
+                isInvalid={!!errors.language?.message}
+              />
+              <Button
+                variant="outline-danger"
+                onClick={() => removelanguage(index)}
+                className="ms-2"
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          <Button
+            variant="outline-secondary"
+            onClick={addlanguage}
+          >
+            Add Language
+          </Button>
           <Form.Control.Feedback type="invalid">
-          {errors.language && errors.language.message}
+            {errors.language && errors.language.message}
           </Form.Control.Feedback>
-        </Form.Group>
+
+        </Form.Group> */}
+         {/* <Form.Group className="mb-3" controlId="language">
+             <Form.Label>Language</Form.Label>
+            <MultiAdd name="language" setResumeDetails={onSubmit} placeholder="language" />
+                 </Form.Group>
         
-        <Form.Group className="mb-3" controlId="Hobby">
-          <Form.Label>Hobby</Form.Label>
-          <Form.Control
-          placeholder="Enter your hobbies"
-          {...register("hobby")}
-          isInvalid={!!errors.hobby?.message}
-          />
-          <Form.Control.Feedback type="invalid">
-          {errors.hobby && errors.hobby.message}
-          </Form.Control.Feedback>
-        </Form.Group>
+                 <Form.Group className="mb-3" controlId="hobby">
+             <Form.Label>Hobby</Form.Label>
+            <MultiAdd name="hobby" setResumeDetails={onSubmit} placeholder="hobby" />
+                 </Form.Group>
+        <Form.Group className="mb-3" controlId="events">
+  <Form.Label>Event Participations</Form.Label>
+  {events.map((event, index) => (
+    <div key={index} className="d-flex mb-2">
+      <Form.Control
+        placeholder="Event Name"
+        value={event.name}
+        onChange={(e) => handleEventChange(index, e.target.value)}
+      />
+      <input
+        type="file"
+        accept=".pdf"
+        onChange={(event) => handleEventCertificateUpload(index, event.target.files[0])}
+      />
+      <Button
+        variant="outline-danger"
+        onClick={() => handleEventRemove(index)}
+        className="ms-2"
+      >
+        Remove
+      </Button>
+    </div>
+  ))}
+  <Button variant="outline-secondary" onClick={handleEventAdd}>
+    Add Event
+  </Button>
+</Form.Group> */}
 
-        <Form.Group className="mb-3" controlId="event">
-          <Form.Label>Event Participation</Form.Label>
-          <Form.Control
-          placeholder="Event Name"
-          {...register("event")}
-          isInvalid={!!errors.event?.message}
-          />
-          <input type="file" accept=".pdf" onChange={(event) => handleFileChange(event.target.files[0])} />
-          <Form.Control.Feedback type="invalid">
-          {errors.event && errors.event.message}
-          </Form.Control.Feedback>
-        </Form.Group>
+<Form.Group className="mb-3" controlId="events">
+  <Form.Label>Event Participations</Form.Label>
+  <MultiEvents name="events" setResumeDetails={onSubmit} />
+</Form.Group>
 
-        <Form.Group className="mb-3" controlId="project">
+
+        {/* <Form.Group className="mb-3" controlId="project">
           <Form.Label>Project</Form.Label>
           <Form.Control
             placeholder="Enter your project name"
@@ -217,9 +324,9 @@ const InformationForm = () => {
           <Form.Control.Feedback type="invalid">
             {errors.project && errors.project.message}
           </Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
 
-        <Form.Group className="mb-3" controlId="projectDescription">
+        {/* <Form.Group className="mb-3" controlId="projectDescription">
           <Form.Label>Project Description</Form.Label>
           <Form.Control
             as="textarea"
@@ -232,8 +339,12 @@ const InformationForm = () => {
           <Form.Control.Feedback type="invalid">
             {errors.projectDescription && errors.projectDescription.message}
           </Form.Control.Feedback>
-        </Form.Group>
-
+        </Form.Group>  */}
+        
+        <Form.Group className="mb-3" controlId="projects">
+             <Form.Label>Projects</Form.Label>
+            <MultiProjects name="projects" setResumeDetails={onSubmit} />
+                 </Form.Group>
         <Form.Group className="mb-3" controlId="linkedin">
           <Form.Label>Linkedin Link</Form.Label>
           <Form.Control

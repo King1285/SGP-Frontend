@@ -5,6 +5,7 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
+    
     choice: yup.string().required("Please select an option"),
     cgpa: yup
       .string()
@@ -28,10 +29,13 @@ const schema = yup
       .max(10, "Please enter maximum 10 characters"),
     skill: yup
       .string()
-      .required(),
+      .required("Plese enter skill"),
     domain: yup
     .string()
-    .required(),
+    .required("Plese enter your interested domain/Technology"),
+    language: yup
+    .string()
+   .required("Enter the lannguage"),
     linkedin: yup
       .string()
       .url("Please enter a valid url")
@@ -58,6 +62,7 @@ const useInformation = () => {
       phone_no: "",
       skill:"",
       domain:"",
+      language:"",
       linkedin: "",
       github: "",
     },
