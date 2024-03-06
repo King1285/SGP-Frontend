@@ -19,7 +19,7 @@ const schema = yup
     confirm_password: yup
       .string()
       .required("Please reconfirm your password")
-      .oneOf([yup.ref("new_password"), null], "Passwords must match"),
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
   })
   .required();
 
@@ -41,8 +41,7 @@ const useResetPassword = () => {
   const onSubmit = (data) => {
     console.log("data", data);
     const payload = {
-      email: state?.email,
-      newPassword: state.new_password,
+      newPassword: data.new_password,
       confirmPassword: data.confirm_password,
     };
     axios
@@ -55,8 +54,24 @@ const useResetPassword = () => {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response && err.response.status === 409) {
+          // Display specific error message based on the response data
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("User with email address or charusat id already exists.");
+          }
+        } else if (err.response.status === 404) {
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("User not Found");
+          }
+        } else {
+          // Handle other types of errors (e.g., network issues)
+          alert("An error occurred. Please try again later.");
+        }
       });
-    // navigate(routes.confirmregister);
   };
 
   return {

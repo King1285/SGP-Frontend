@@ -77,23 +77,30 @@ const useRegister = () => {
       .post(REGISTER, payload)
       .then((res) => {
         console.log(res.status, res.data, "resgister res");
-        axios
-          .post(SEND_OTP, { email: data.email })
-          .then((res) => {
-            console.log(res.status, res.data, "send otp res");
-            navigate(routes.confirmregister, {
-              state: {
-                email: data.email,
-              },
-            });
-          })
-          .catch((err) => {
-            console.log("error", err);
+        axios.post(SEND_OTP, { email: data.email }).then((res) => {
+          console.log(res.status, res.data, "send otp res");
+          navigate(routes.confirmregister, {
+            state: {
+              email: data.email,
+            },
           });
-        // navigate(routes.information);
+        });
       })
       .catch((err) => {
         console.log(err);
+        if (err.response && err.response.status === 409) {
+          // Display specific error message based on the response data
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("User with email address or charusat id already exists.");
+          }
+        } else if (err.response && err.response.status === 200) {
+          alert("user registered Successfully");
+        } else {
+          // Handle other types of errors (e.g., network issues)
+          alert("An error occurred. Please try again later.");
+        }
       });
   };
 

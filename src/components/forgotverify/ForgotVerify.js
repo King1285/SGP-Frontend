@@ -14,15 +14,15 @@ const ForgotVerify = () => {
       <div className={styles.ForgotVerify}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h4>Verify OTP</h4>
-          <Form.Group className="mb-3" controlId="forgot_verify">
+          <Form.Group className="mb-3" controlId="otp">
             {/* <Form.Label>Verify OTP</Form.Label> */}
             <Form.Control
               placeholder="Enter OTP"
-              {...register("forgot_verify")}
-              isInvalid={!!errors.forgot_verify?.message}
+              {...register("otp")}
+              isInvalid={!!errors.otp?.message}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.forgot_verify && errors.forgot_verify.message}
+              {errors.otp && errors.otp.message}
             </Form.Control.Feedback>
           </Form.Group>
 

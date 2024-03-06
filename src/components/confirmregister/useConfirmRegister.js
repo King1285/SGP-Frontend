@@ -43,6 +43,16 @@ const useConfirmRegister = () => {
       })
       .catch((err) => {
         console.log(err);
+
+        if (err.response && err.response.status === 401) {
+          // If the status code is 401 (Unauthorized), it means invalid credentials
+          alert(" User with email address or charusat id is already exists ");
+        } else {
+          // Handle other types of errors (e.g., network issues)
+          alert("An error occurred. Please try again later.");
+
+          // dynamic show from api error res
+        }
       });
     // navigate(routes.confirmregister);
   };

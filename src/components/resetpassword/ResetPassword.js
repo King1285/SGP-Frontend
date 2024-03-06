@@ -18,6 +18,7 @@ const ResetPassword = () => {
             <Form.Label>Reset Password</Form.Label>
             <Form.Control
               placeholder="Reset Password"
+              type="password"
               {...register("new_password")}
               isInvalid={!!errors.new_password?.message}
             />
@@ -29,6 +30,7 @@ const ResetPassword = () => {
             <Form.Label>Confirm new Password</Form.Label>
             <Form.Control
               placeholder="Confirm Password"
+              type="password"
               {...register("confirm_password")}
               isInvalid={!!errors.confirm_password?.message}
             />
@@ -38,7 +40,7 @@ const ResetPassword = () => {
           </Form.Group>
 
           <Button variant="primary" type="submit" style={{ width: "100%" }}>
-            Verify
+            Submit
           </Button>
         </Form>
       </div>

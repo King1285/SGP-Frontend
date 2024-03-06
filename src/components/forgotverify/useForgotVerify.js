@@ -9,7 +9,7 @@ import { FORGOT_VERIFY_OTP } from "../../constants/api";
 
 const schema = yup
   .object({
-    forgot_verify: yup.string().required("Please enter a valid OTP"),
+    otp: yup.string().required("Please enter a valid OTP"),
   })
   .required();
 
@@ -32,6 +32,8 @@ const useForgotVerify = () => {
       email: state?.email,
       otp: data.otp,
     };
+    console.log(data.otp);
+    console.log(payload);
     axios
       .post(FORGOT_VERIFY_OTP, payload)
       .then((res) => {
@@ -42,12 +44,21 @@ const useForgotVerify = () => {
               email: state?.email,
             },
           });
+          navigate(routes.resetpassword);
         }
       })
       .catch((err) => {
         console.log(err);
+        if (err.response && err.response.status === 401) {
+          // If the status code is 401 (Unauthorized), it means invalid credentials
+          alert("Invalid otp");
+        } else {
+          // Handle other types of errors (e.g., network issues)
+          alert("An error occurred. Please try again later.");
+
+          // dynamic show from api error res
+        }
       });
-    // navigate(routes.confirmregister);
   };
 
   return {

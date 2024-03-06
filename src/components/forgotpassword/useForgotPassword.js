@@ -46,9 +46,9 @@ const useForgotPassword = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
-        // alert("vgvgvjvbjhbjkbjk");
-        // dynamic show from api error res
+        console.log(err);       
+          // Handle other types of errors (e.g., network issues)
+          alert("An error occurred. Please try again later.");
       });
     navigate(routes.forgotverify);
   };
