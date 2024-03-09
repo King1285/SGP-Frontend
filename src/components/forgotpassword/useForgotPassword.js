@@ -46,9 +46,18 @@ const useForgotPassword = () => {
         }
       })
       .catch((err) => {
-        console.log(err);       
+        console.log(err);
+
+        if (err.response && err.response.status === 401) {
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("User with email address or charusat id is already exists.");
+          }
+        } else {
           // Handle other types of errors (e.g., network issues)
           alert("An error occurred. Please try again later.");
+        }
       });
     navigate(routes.forgotverify);
   };

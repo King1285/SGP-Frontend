@@ -39,7 +39,7 @@ const schema = yup
     charusat_id: yup
       .string()
       .required("Please enter a charusat id")
-      .matches("^(?=.*ce).*$", "Please enter a valid charusat id"),
+      .matches("^(?=.*[ce]*[CE]*[Ce]).*$", "Please enter a valid charusat id"),
   })
   .required();
 

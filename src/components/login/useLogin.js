@@ -52,14 +52,30 @@ const useLogin = () => {
       })
       .catch((err) => {
         console.log(err);
-        if (err.response && err.response.status === 401) {
-          // If the status code is 401 (Unauthorized), it means invalid credentials
-          alert("Invalid username or password");
+        if (err.response && err.response.status === 404) {
+          // Display specific error message based on the response data
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("User not Found");
+          }
+        } else if (err.response && err.response.status === 400) {
+          // Display specific error message based on the response data
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("Please fill all the fields");
+          }
+        } else if (err.response && err.response.status === 401) {
+          // Display specific error message based on the response data
+          if (err.response.data && err.response.data.message) {
+            alert(err.response.data.message);
+          } else {
+            alert("Invalid password");
+          }
         } else {
           // Handle other types of errors (e.g., network issues)
           alert("An error occurred. Please try again later.");
-
-          // dynamic show from api error res
         }
       });
   };

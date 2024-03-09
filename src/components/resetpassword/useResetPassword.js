@@ -19,7 +19,7 @@ const schema = yup
     confirm_password: yup
       .string()
       .required("Please reconfirm your password")
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("new_password"), null], "Passwords must match"),
   })
   .required();
 
@@ -54,14 +54,7 @@ const useResetPassword = () => {
       })
       .catch((err) => {
         console.log(err);
-        if (err.response && err.response.status === 409) {
-          // Display specific error message based on the response data
-          if (err.response.data && err.response.data.message) {
-            alert(err.response.data.message);
-          } else {
-            alert("User with email address or charusat id already exists.");
-          }
-        } else if (err.response.status === 404) {
+        if (err.response.status === 404) {
           if (err.response.data && err.response.data.message) {
             alert(err.response.data.message);
           } else {
