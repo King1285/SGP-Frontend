@@ -6,4 +6,5 @@ export const routes = {
   confirmregister: "/confirmregister",
   information: "/information",
   resetpassword: "/resetpassword",
+  profile: "/profile",
 };
