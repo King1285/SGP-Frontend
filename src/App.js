@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Profiler } from "react";
 import {
   Route,
   RouterProvider,
@@ -6,7 +6,6 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import LoginForm from "./components/login/LoginForm";
-
 import RegistrationForm from "./components/registration/RegistrationForm";
 import Root from "./Root";
 import InformationForm from "./components/information/InformationForm";
@@ -14,6 +13,8 @@ import ConfirmRegistration from "./components/confirmregister/ConfirmRegistratio
 import ForgotPassword from "./components/forgotpassword/ForgotPassword";
 import ForgotVerify from "./components/forgotverify/ForgotVerify";
 import ResetPassword from "./components/resetpassword/ResetPassword";
+import DashBoard from "./components/profile/Profile";
+import Profile from "./components/profile/Profile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       <Route path="confirmregister" element={<ConfirmRegistration />} />
       <Route path="information" element={<InformationForm />} />
       <Route path="resetpassword" element={<ResetPassword />} />
+      <Route path="profile" element={<Profile />} />
     </Route>
   )
 );
