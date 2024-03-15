@@ -204,14 +204,14 @@ const InformationForm = () => {
             {errors.skill && errors.skill.message}
           </Form.Control.Feedback>
         </Form.Group> */}
-        <Form.Group className="mb-3" controlId="skill">
+        {/* <Form.Group className="mb-3" controlId="skill">
           <Form.Label>Skills</Form.Label>
           <MultiAdd
             name="skill"
             setResumeDetails={onSubmit}
             placeholder="skill"
           />
-        </Form.Group>
+        </Form.Group> */}
 
         {/* <Form.Group className="mb-3" controlId="domain">
           <Form.Label>Domain/Technology</Form.Label>
@@ -349,11 +349,11 @@ const InformationForm = () => {
             {errors.projectDescription && errors.projectDescription.message}
           </Form.Control.Feedback>
         </Form.Group>  */}
-
+        {/* 
         <Form.Group className="mb-3" controlId="projects">
           <Form.Label>Projects</Form.Label>
           <MultiProjects name="projects" setResumeDetails={onSubmit} />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group className="mb-3" controlId="linkedin">
           <Form.Label>Linkedin Link</Form.Label>
           <Form.Control
