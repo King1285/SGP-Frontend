@@ -28,7 +28,7 @@ const MultiAdd = ({ label, setResumeDetails, name, placeholder }) => {
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder={`Enter your ${placeholder}`} 
+        placeholder={` ${placeholder}`}
         className="input-tag"
       />
       <button className="add-btn" onClick={onAdd}>

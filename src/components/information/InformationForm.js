@@ -103,9 +103,9 @@ const InformationForm = () => {
   // }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container_info}>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Student Information</h4>
+        <h4>STUDENT INFORMATION</h4>
         <Form.Group controlId="image">
           <Form.Label>Image</Form.Label>
           <input
@@ -245,10 +245,15 @@ const InformationForm = () => {
         <Form.Group className="mb-3" controlId="domain">
           <Form.Label>Domain/Technology</Form.Label>
           <MultiAdd
+            placeholder="Enter interested domain/technology"
+            {...register("domain")}
+            isInvalid={!!errors.domain?.message}
             name="domain"
             setResumeDetails={onSubmit}
-            placeholder="entrested domain"
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.domain && errors.domain.message}
+          </Form.Control.Feedback>
         </Form.Group>
 
         {/* <Form.Group className="mb-3" controlId="language">

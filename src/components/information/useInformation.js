@@ -27,7 +27,7 @@ const schema = yup
       .min(10, "Please enter minimum 10 characters")
       .max(10, "Please enter maximum 10 characters"),
     // skill: yup.string().required(),
-    domain: yup.string().required(),
+    domain: yup.string().required("Please enter your domain/technology"),
     linkedin: yup
       .string()
       .url("Please enter a valid url")
@@ -56,6 +56,7 @@ const useInformation = () => {
       domain: "",
       linkedin: "",
       github: "",
+      domain: "",
     },
   });
 

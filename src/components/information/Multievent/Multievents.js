@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import "./Multievents.css";
 
 const MultiEvents = ({ name, setResumeDetails }) => {
   const [value, setValue] = useState({ name: "", certificate: null });
@@ -32,7 +33,7 @@ const MultiEvents = ({ name, setResumeDetails }) => {
       <div className="multi-input-wrapper">
         <Form.Control
           type="text"
-          placeholder="Event Name"
+          placeholder="Enter event Name"
           name="name"
           value={value.name}
           onChange={onChange}
@@ -43,7 +44,7 @@ const MultiEvents = ({ name, setResumeDetails }) => {
           onChange={handleCertificateUpload}
         />
         <Button className="add-btn" onClick={onAdd}>
-          Add Event
+          Add+
         </Button>
       </div>
       <div>
@@ -55,10 +56,7 @@ const MultiEvents = ({ name, setResumeDetails }) => {
                 Download Certificate
               </a>
             )}
-            <Button
-              variant="outline-danger"
-              onClick={() => onRemove(event.id)}
-            >
+            <Button variant="outline-danger" onClick={() => onRemove(event.id)}>
               Remove
             </Button>
           </div>

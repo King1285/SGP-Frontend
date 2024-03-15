@@ -6,7 +6,7 @@
   }
   
   form {
-    width: 600px;
+    width: 450px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -14,7 +14,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   form h4 {
-    color:var(--primary); 
+    color:var(--primary);
+    margin-bottom: 15px;
   }
   
   
@@ -35,9 +36,9 @@
   }
   
   .input-tag {
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-block-color: rgb(53, 150, 170);
+     border: 1px solid var(--primary); 
+     border: 1px solid #ccc;
+     border-radius: 8px;
     
   }
   
@@ -47,6 +48,7 @@
     border-radius: 8px;
     cursor: pointer;
     margin-right: 1px;
+    margin-left: 4px;
   }
   .remove-btn {
     block-size: auto;
@@ -67,6 +69,6 @@
     margin-bottom: 5px;
   }
   
-  .list-value span {
+  /* .list-value span {
     border-radius: 8px;
-  }
+  } */
