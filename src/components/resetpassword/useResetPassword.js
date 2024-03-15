@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import axios from "axios";
-import { FORGOT_PASSWORD } from "../../constants/api";
+import { FORGOT_PASSWORD, FORGOT_SEND_OTP } from "../../constants/api";
 
 const schema = yup
   .object({
@@ -40,31 +40,38 @@ const useResetPassword = () => {
   });
   const onSubmit = (data) => {
     console.log("data", data);
-    const payload = {
-      newPassword: data.new_password,
-      confirmPassword: data.confirm_password,
-    };
-    axios
-      .post(FORGOT_PASSWORD, payload)
-      .then((res) => {
-        console.log(res.status, res.data);
-        if (res.status === 200) {
-          navigate(routes.login);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err.response.status === 404) {
-          if (err.response.data && err.response.data.message) {
-            alert(err.response.data.message);
-          } else {
-            alert("User not Found");
+    if (state?.email) {
+      const payload = {
+        email: state?.email,
+        newPassword: data.new_password,
+        confirmPassword: data.confirm_password,
+      };
+      console.log(payload);
+      axios
+        .post(FORGOT_PASSWORD, payload)
+        .then((res) => {
+          // console.log(res.status, res.data);
+          if (res.status === 200) {
+            // console.log(res.status, res.data, "reset password");
+
+            navigate(routes.login);
           }
-        } else {
-          // Handle other types of errors (e.g., network issues)
-          alert("An error occurred. Please try again later.");
-        }
-      });
+        })
+
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 404) {
+            if (err.response.data && err.response.data.message) {
+              alert(err.response.data.message);
+            } else {
+              alert("User not Found");
+            }
+          } else {
+            // Handle other types of errors (e.g., network issues)
+            alert("An error occurred. Please try again later.");
+          }
+        });
+    }
   };
 
   return {

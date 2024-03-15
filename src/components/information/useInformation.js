@@ -17,17 +17,17 @@ const schema = yup
     age: yup
       .string()
       .required("Please enter your age")
-      .matches("^d+$", "Please enter a numeric value")
+      // .matches("^d+$", "Please enter a numeric value")
       .min(2, "Please enter minimum 2 characters")
       .max(2, "Please enter maximum 2 characters"),
     phone_no: yup
       .string()
       .required("Please enter your phone number")
-      .matches("^d+$", "Please enter a numeric value")
+      // .matches("^d+$", "Please enter a numeric value")
       .min(10, "Please enter minimum 10 characters")
       .max(10, "Please enter maximum 10 characters"),
-    skill: yup.string().required(),
-    domain: yup.string().required(),
+    // skill: yup.string().required(),
+    domain: yup.string().required("Please enter your domain/technology"),
     linkedin: yup
       .string()
       .url("Please enter a valid url")
@@ -52,10 +52,11 @@ const useInformation = () => {
       cgpa: "",
       age: "",
       phone_no: "",
-      skill: "",
+      // skill: "",
       domain: "",
       linkedin: "",
       github: "",
+      domain: "",
     },
   });
 

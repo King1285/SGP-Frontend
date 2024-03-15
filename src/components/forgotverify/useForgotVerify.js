@@ -44,7 +44,6 @@ const useForgotVerify = () => {
               email: state?.email,
             },
           });
-          navigate(routes.resetpassword);
         }
       })
       .catch((err) => {

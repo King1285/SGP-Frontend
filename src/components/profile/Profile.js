@@ -9,7 +9,7 @@ const Profile = ({ data, imageContainerDisplay }) => {
   return (
     <div className="profile-page">
       <div className="header">
-        <Form inline>
+        <Form>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-primary">Search</Button>
         </Form>
