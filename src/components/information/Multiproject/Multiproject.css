@@ -35,15 +35,27 @@
     margin-bottom: 20px;
   }
   
-  .input-tag {
+  /* .input-tag {
      border: 1px solid var(--primary); 
      border: 1px solid #ccc;
      border-radius: 8px;
     
+  } */
+  .input-tag { 
+    border-radius: 8px;
+  }
+  .input-tag:active {
+    box-shadow: 0 0 5px 2px rgb(168, 217, 244); 
+  }
+  
+  
+  .input-tag:focus { 
+    border-color: #000; 
+    outline: 1px solid #ccc;
   }
   
   .add-btn{
-    background-color: var(--primary);  /* Use variable for primary color */
+    background-color: var(--primary);  
     color: white;
     border: none;
     border-radius: 6px;
