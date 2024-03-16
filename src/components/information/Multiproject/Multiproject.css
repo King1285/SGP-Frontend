@@ -41,17 +41,26 @@
      border-radius: 8px;
     
   } */
-  .input-tag { 
+  .input-tag {  
+    width: 400px;
+    margin-right: 7px;
+    padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .input-tag:active {
-    box-shadow: 0 0 5px 2px rgb(168, 217, 244); 
+    border: 1px solid var(--primary);
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   
   .input-tag:focus { 
-    border-color: #000; 
-    outline: 1px solid #ccc;
+    /* border-radius: 8px; */
+    border-color:  var(--primary); 
+    outline: 4px solid #c0d9f5;
   }
   
   .add-btn{
