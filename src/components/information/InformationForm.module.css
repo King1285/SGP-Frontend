@@ -47,3 +47,27 @@
   border-radius: 4px;
   cursor: pointer;
 }
+input[type="file"] {
+  padding: 10px; /* Adjust for visual appeal */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Optionally add rounded corners */
+  background-color: #f2f2f2;
+}
+
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Contain the image within the preview box */
+}
+
+.image-preview img {
+  width: 100%; /* Ensure image fills the preview box */
+  height: 100%;
+  object-fit: cover; /* Preserve aspect ratio and fill preview */
+}
