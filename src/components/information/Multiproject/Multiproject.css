@@ -42,13 +42,12 @@
     
   }
   
-  .add-btn {
-    block-size: auto;
-    padding: 8.25px 16.5px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-right: 1px;
-    margin-left: 4px;
+  .add-btn{
+    background-color: var(--primary);  /* Use variable for primary color */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
   }
   .remove-btn {
     block-size: auto;

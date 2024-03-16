@@ -43,7 +43,7 @@ const MultiEvents = ({ name, setResumeDetails }) => {
           accept=".pdf"
           onChange={handleCertificateUpload}
         />
-        <Button className="add-btn" onClick={onAdd}>
+        <Button className="add-btn1" onClick={onAdd}>
           Add+
         </Button>
       </div>
